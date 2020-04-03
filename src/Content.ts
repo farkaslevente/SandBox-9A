@@ -55,6 +55,14 @@ export default class Content {
         const kerület = 2 * (oldalA + oldalB);
         res.write(`Terület = ${terület}\n`);
         res.write(`Kerület = ${kerület}\n`);
+
+        res.write(`<input type='text' name='inputa' value=${x} style='width:5em;' onChange='this.form.submit();'>\n`);
+        res.write("Páros Páratlan\n");
+        res.write("x= ");
+        let x: number = parseInt(params.inputb as string);
+        if (isNaN(x)) {
+        x = 0;
+        }
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
