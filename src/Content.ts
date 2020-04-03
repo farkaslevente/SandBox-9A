@@ -79,47 +79,27 @@ export default class Content {
 
         switch (jegy) {
             case 1:
-                res.write("elégtelen")
+                res.write("elégtelen\n");
                 break;
-        
-            default:
-                break;
-        }
 
-        switch (jegy) {
             case 2:
-                res.write("elégséges")
+                res.write("elégséges\n");
                 break;
-        
-            default:
-                break;
-        }
 
-        switch (jegy) {
             case 3:
-                res.write("közepes")
+                res.write("közepes\n");
                 break;
-        
-            default:
-                break;
-        }
 
-        switch (jegy) {
             case 4:
-                res.write("jó")
+                res.write("jó\n");
                 break;
-        
-            default:
-                break;
-        }
 
-        switch (jegy) {
             case 5:
-                res.write("jeles")
+                res.write("jeles\n");
                 break;
-        
+
             default:
-                res.write("Ez nem osztályzat!")
+                res.write("Ez nem osztályzat!");
                 break;
         }
         // <---- Fejezd be a kódolást
