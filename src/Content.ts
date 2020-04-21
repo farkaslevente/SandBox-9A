@@ -2,6 +2,17 @@
 import http from "http";
 import url from "url";
 
+function osszead(a: number, b: number): number {
+    return a + b;
+}
+
+function faktorialis(n: number): number {
+    let fakt: number = 1;
+    for (let i = 2; i <= n; i++) {
+        fakt = fakt * i;
+    }
+    return fakt;
+}
 export default class Content {
     public content(req: http.IncomingMessage, res: http.ServerResponse): void {
         // favicon.ico kérés kiszolgálása:
@@ -102,6 +113,25 @@ export default class Content {
                 res.write("Ez nem osztályzat!");
                 break;
         }
+
+        res.write("Függvény hívása\n");
+        let x1: number;
+        x1 = 4;
+        x1++;
+        let x2: number;
+        x2 = 4;
+        x2--;
+        const osszeg: number = osszead(x1, x2);
+        res.write(`${x1}+${x2}=${osszeg}`);
+
+        res.write("Szám faktoriálisa\n");
+        res.write("Kérem az számot: ");
+        let n: number = parseInt(params.n as string);
+        if (isNaN(n)) {
+            n = 5;
+        }
+        res.write(`<input type='text' name='n' value=${n} style='width:5em;' onChange='this.form.submit();'>\n`);
+        res.write(`${n}!=${faktorialis(n)}`);
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
