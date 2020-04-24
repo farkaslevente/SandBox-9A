@@ -1,4 +1,4 @@
-﻿import fs from "fs";
+﻿import fs, { truncateSync } from "fs";
 import http from "http";
 import url from "url";
 
@@ -132,6 +132,56 @@ export default class Content {
         }
         res.write(`<input type='text' name='n' value=${n} style='width:5em;' onChange='this.form.submit();'>\n`);
         res.write(`${n}!=${faktorialis(n)}`);
+        res.write("\nTömbök\n");
+        const nevek: string[] = ["Andi", "Anna", "Bence", "Laci"];
+        res.write(nevek[0] + "\n");
+        res.write(nevek[1] + "\n");
+        res.write(nevek[2] + "\n");
+        res.write(nevek[3] + "\n");
+
+        res.write("visszafelé:\n");
+        for (let i: number = nevek.length - 1; i >= 0; i--) {
+            res.write(nevek[i] + "\n");
+        }
+        //bejárás tétele
+        const számok: number[] = [23, 67, 33, 77, 88, 73, 21, 20];
+        for (let i = 0; i < számok.length; i++) {
+            res.write(`${számok[i]}, `);
+        }
+        res.write("\n");
+        res.write(számok.toString() + "\n");
+        //bejárás for of ciklussal
+        for (const i of számok) {
+            res.write(`${i}; `);
+        }
+        //for in ciklus
+        for (const i in számok) {
+            res.write(`${i}; `);
+        }
+        res.write("\n");
+
+        for (const i in számok) {
+            const utolsóIndex: number = számok.length - 1;
+            if (parseInt(i) != utolsóIndex) {
+                res.write(`${számok[i]}, `);
+            } else {
+                res.write(`${számok[i]} `);
+            }
+            res.write(`${i}; `);
+        }
+        res.write("\n");
+
+        //Kiírás a join() függvény használatával
+        res.write(számok.join(". "));
+
+        //Szélsőérték keresés algoritmusa
+        let min: number = számok[0];
+        for (let i = 0; i < számok.length; i++) {
+            if (számok[i] < min){
+                min = számok[i]
+            }
+        }
+        res.write(`legkisebb elem értéke: ${min}\n`)
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
