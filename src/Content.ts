@@ -177,11 +177,27 @@ export default class Content {
         //Szélsőérték keresés algoritmusa
         let min: number = számok[0];
         for (let i = 0; i < számok.length; i++) {
-            if (számok[i] < min){
-                min = számok[i]
+            if (számok[i] < min) {
+                min = számok[i];
             }
         }
-        res.write(`legkisebb elem értéke: ${min}\n`)
+        res.write(`legkisebb elem értéke: ${min}\n`);
+
+        let miniPáratlan: number = -1;
+        for (let i = 0; i < számok.length; i++) {
+            if (számok[i] % 2 == 1) {
+                if (miniPáratlan == -1) {
+                    miniPáratlan = i;
+                } else {
+                    if (számok[i] < számok[miniPáratlan]) {
+                        miniPáratlan = i;
+                    }
+                }
+            }
+        }
+        if (miniPáratlan != -1) {
+            res.write(`A legkisebb páratlan elem értéke: ${számok[miniPáratlan]}, indexe: ${miniPáratlan}\n`);
+        }
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
