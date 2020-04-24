@@ -198,6 +198,7 @@ export default class Content {
         if (miniPáratlan != -1) {
             res.write(`A legkisebb páratlan elem értéke: ${számok[miniPáratlan]}, indexe: ${miniPáratlan}\n`);
         }
+
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
